@@ -1,5 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
+import router from './ui/router'
 
-createApp(App).use(router).mount('#app')
+import '@/assets/styles/global.css'
+import global from './assets/scripts/global'
+
+global.initFunctions()
+
+createApp(App)
+  .use(router)
+  .mount('#app')

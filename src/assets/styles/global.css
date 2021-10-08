@@ -1,0 +1,138 @@
+@import '../fonts/exo2-font.css';
+@import '../fonts/font-awesome.css';
+
+:root {
+  --primaryColor: #F23D52;
+  --fontName: 'Exo';
+  --textColor: #343434;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--fontName);
+  color: var(--textColor);
+}
+
+body {
+  background-color: #F4F6FA;
+  height: 100vh;
+}
+
+.textfield {
+  width: 100%;
+  max-width: 350px;
+}
+
+.textfield__input {
+  appearance: none;
+  border: 1px solid #ededed;
+  background-color: white;
+  outline: none;
+  height: 50px;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.25s;
+  padding: 0 15px;
+}
+
+.textfield__input::placeholder {
+  color: #d1d1d1;
+}
+
+.textfield__input:hover { border-color: #d3d3d3; }
+.textfield__input:focus {
+  border-color: var(--primaryColor);
+  box-shadow: inset 0 0 0 1px var(--primaryColor);
+}
+
+.textfield__error {
+  color: var(--primaryColor);
+  font-size: 14px;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  grid-gap: 5px;
+  cursor: pointer;
+}
+
+.checkbox * { pointer-events: none; }
+.checkbox:active { transform: translateY(1px); }
+
+.checkbox--checked .checkbox__icon { color: var(--primaryColor); }
+
+.checkbox__label {
+  color: #a5a5a5;
+  font-weight: 400;
+  user-select: none;
+}
+
+.checkbox__icon {
+  color: #a5a5a5;
+  font-size: 20px;
+}
+
+button {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+button:active { transform: translateY(1px); }
+
+.button {
+  display: inline-block;
+  width: 100%;
+  background-color: var(--primaryColor);
+  border-radius: 10px;
+  border: none;
+  color: white;
+  height: 50px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button--outlined {
+  border: 1px solid #c7c7c7;
+  background-color: white;
+  color: #c7c7c7;
+}
+
+.button--selected {
+  border-color: var(--primaryColor);
+  color: var(--primaryColor);
+}
+
+.tooltip {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  font-weight: 300;
+  padding: 15px;
+  border-radius: 10px;
+  width: 280px;
+  font-size: 14px;
+  color: white;
+  background-color: var(--primaryColor);
+  display: none;
+}
+
+.tooltip::after {
+  content: '';
+  display: block;
+  height: 16px;
+  width: 16px;
+  transform: rotate(45deg);
+  position: absolute;
+  top: -8px;
+  right: 30px;
+  border-radius: 5px 0 0 0;
+  background-color: var(--primaryColor);
+}
