@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="brand">
-      <img src="@/assets/images/logo-mtc.png" width="200" alt="MTC">
+      <img src="@/assets/images/logo.png" width="200" alt="MTC">
       <h1 class="brand__name">Agentes SRAT</h1>
     </div>
     <div class="user">
@@ -45,7 +45,7 @@
       </div>
       <button class="logout" @click="logout" type="button"><i class="fas fa-sign-out-alt"></i> Cerrar sesi&oacute;n</button>
     </div>
-    <div class="map">
+    <div id="map">
 
     </div>
   </main>
@@ -178,10 +178,10 @@ main {
   margin-right: 3px;
 }
 
-.map {
+#map {
   width: calc(100% - 400px);
   border-radius: 20px;
-  background-color: #8F8F8F;
+  background-color: #c0c0c0;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
   min-height: 100%;
 }
@@ -190,7 +190,30 @@ main {
 <script lang="ts">
 import { Vue } from "vue-class-component";
 
+declare const mapboxgl: any
+
 export default class Dashboard extends Vue {
+
+  mounted() {
+    this.setupMapbox()
+  }
+
+  setupMapbox() {
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FzYW52IiwiYSI6ImNrdWlxc2t6ZjAxcGwyd21ieHU4ZTY3aTMifQ.xMwwaLvLd_6Co0YDLw9HNA'
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/gasanv/ckuis4lpc0taf17rz9t089oel',
+      center: [-77.06770111006696, -11.997474439578207],
+      zoom: 14
+    })
+
+    const places = [ [-77.0627119156696, -11.98990239079675], [-77.06072267334095, -12.006371261880377], [-77.06119598683394, -11.993943942280948] ]
+    places.forEach((place: any) => {
+      const marker = new mapboxgl.Marker({color: '#F23D52', scale: 1.4})
+        .setLngLat(place)
+        .addTo(map)
+    })
+  }
 
   logout() {
     this.$router.push('/login')

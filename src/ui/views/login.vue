@@ -1,6 +1,6 @@
 <template>
   <header class="login-head">
-    <img src="@/assets/images/logo-mtc.png" width="200" alt="MTC">
+    <img src="@/assets/images/logo.png" width="200" alt="MTC">
     <div class="no-account" @mouseenter="handleTooltip" @mouseleave="handleTooltip">
       <p class="no-account__quest">&iquest;No tienes una cuenta?</p>
       <i class="no-account__icon far fa-question-circle"></i>
@@ -16,7 +16,7 @@
         <span v-if="!user.username?.valid" class="textfield__error">Ingrese un usuario v&aacute;lido</span>
       </div>
       <div id="password" class="textfield">
-        <input class="textfield__input" @input="validateField" v-model="user.password.value" type="text" placeholder="Contrase&ntilde;a">
+        <input class="textfield__input" @input="validateField" v-model="user.password.value" type="password" placeholder="Contrase&ntilde;a">
         <span v-if="!user.password?.valid" class="textfield__error">Ingrese una contrase&ntilde;a v&aacute;lida</span>
       </div>
       <label class="checkbox">

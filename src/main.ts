@@ -6,6 +6,7 @@ import '@/assets/styles/global.css'
 import global from './assets/scripts/global'
 
 global.initFunctions()
+// global.setupGoogleMaps()
 
 createApp(App)
   .use(router)

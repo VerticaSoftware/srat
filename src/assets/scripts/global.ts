@@ -1,3 +1,5 @@
+declare const google: any
+
 export default {
 
   initFunctions: () => {
@@ -30,6 +32,25 @@ export default {
   regexPatterns: {
     username: new RegExp(/^[a-zA-ZÁ-Úá-úñÑ0-9]+$/),
     password: new RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)
+  },
+
+  setupGoogleMaps: () => {
+
+    let map
+    function initMap() {
+      const mapTag = document.getElementById('map') as HTMLElement
+      map = new google.maps.Map(mapTag, {
+        center: { lat: -12.0111057, lng: -76.8511632 },
+        zoom: 8
+      })
+    }
+
+    const googleScript = document.createElement('script')
+    googleScript.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDJACT1wWt0SCaSX3WslI6jebIFh17lkA4')
+    document.body.appendChild(googleScript)
+
+    window.onload = initMap
+    
   }
   
 }
